@@ -1,0 +1,95 @@
+{
+  "Corbalar": [
+    {
+      "YemekAdi": "Mercimek Çorbası",
+      "Fiyat": 20
+    },
+    {
+      "YemekAdi": "Domates Çorbası",
+      "Fiyat": 30
+    },
+    {
+      "YemekAdi": "Brokoli Çorbası",
+      "Fiyat": 40
+    }
+  ],
+  "AnaYemekler": [
+    {
+      "YemekAdi": "Pizza"
+      "Fiyat": 50
+    },
+    {
+      "YemekAdi": "Adana",
+      "Fiyat": 40
+    },
+    {
+      "YemekAdi": "Lahmacun",
+      "Fiyat": 30
+    },
+    {
+      "YemekAdi": "Burger",
+      "Fiyat": 20
+    }
+  ],
+  "Salatalar": [
+    {
+      "YemekAdi": "gavurdağSalatasi",
+      "Fiyat": 17
+    },
+    {
+      "YemekAdi": "rokaSalatasi",
+      "Fiyat": 14
+    },
+    {
+      "YemekAdi": "MevsimSalatasi",
+      "Fiyat": 30
+    }
+  ],
+  "SicakIcecekler": [
+    {
+      "IcecekAdi": "Cay",
+      "Fiyat": 14
+    },
+    {
+      "IcecekAdi": "TurkKahvesi",
+      "Fiyat": 14
+    },
+    {
+      "IcecekAdi": "Mocha",
+      "Fiyat": 30
+    },
+    {
+      "IcecekAdi": "Cappicino",
+      "Fiyat": 25
+    },
+    {
+      "IcecekAdi": "Macchiato",
+      "Fiyat": 17
+    },
+    {
+      "IcecekAdi": "Mocha",
+      "Fiyat": 16
+    },
+    {
+      "IcecekAdi": "FiltreKahve",
+      "Fiyat": 12
+    }
+  ],
+    "SogukIcecekler":
+    [
+        {"Su": 17},
+        {"Soda": 15},
+        {"Ayran": 19},
+        {"Kola": 14}
+    ],
+    "Tatlilar":
+    [
+        {"Tiramisu": 17},
+        {"Sufle": 15},
+        {"FrambuazliCheesecake": 19},
+        {"Sutlac": 14},
+        {"HavucDilimBaklava": 12},
+        {"Magnolia": 14}
+    ]
+
+}
