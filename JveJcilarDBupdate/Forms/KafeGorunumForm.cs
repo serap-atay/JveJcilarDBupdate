@@ -18,6 +18,7 @@ namespace KafeAdisyon.Forms
         {
             InitializeComponent();
         }
+        public decimal toplamTutar;
         private MasaRepostory _masaRepostory;
         private KatRepostory _katRepostory;
         private SiparisRepostory _siparisRepository;
@@ -93,13 +94,14 @@ namespace KafeAdisyon.Forms
 
         private frmSiparis _frmSiparis;
         private void BtnMasa_Click(object sender, EventArgs e)
-        {
+        {            
             Button seciliButton = sender as Button;
             if (_frmSiparis == null || _frmSiparis.IsDisposed)
             {
-                _frmSiparis = new frmSiparis();
+                _frmSiparis = new frmSiparis(this);
             }
             //_frmSiparis.MdiParent = this.MdiParent;
+            _frmSiparis.MasaninSiparisleri = new();
             _frmSiparis.WindowState = FormWindowState.Maximized;
             _frmSiparis.SeciliMasa = seciliButton.Tag as Masa;
             _frmSiparis.MasaninSiparisleri = _siparisRepository
@@ -112,26 +114,24 @@ namespace KafeAdisyon.Forms
             }
             else if (result == DialogResult.Abort)
             {
-                _siparisRepository.Update();
                 var masaninSiparisleri = _siparisRepository
                 .Get(new[] { "Masa" }, x =>
-                x.Masa.Id == _frmSiparis.SeciliMasa.Id && x.Masa.MasaDurumu == true).ToList(); 
-                MessageBox.Show($"Masa kapatıldı: {masaninSiparisleri.Sum(a => a.Fiyat * a.Adet):c2} Tutar Tahsil edildi.");
-                var silinecekSiparisler =_siparisRepository.Get(siparis => siparis.MasaId == _frmSiparis.SeciliMasa.Id).ToList();
-
+                x.MasaId == _frmSiparis.SeciliMasa.Id).ToList();
+                MessageBox.Show($"Masa kapatıldı: {toplamTutar:c2} Tutar Tahsil edildi.");
+                var silinecekSiparisler =_siparisRepository.Get(new[] {"Masa"}, siparis => siparis.MasaId == _frmSiparis.SeciliMasa.Id).ToList();
                 foreach (var item in silinecekSiparisler)
                 {
                     _siparisRepository.Remove(item);
                 }
-
-
+                seciliButton.BackColor = defaultKatColor;                
                 //foreach (var siparis in masaninSiparisleri)
                 //{
                 //    siparis.Masa.MasaDurumu = false;
                 //}
                 //_siparisRepository.Update();
             }
-            _siparisRepository.Update();
+            _siparisRepository.Update(); //gereksiz
+            _masaRepostory.Update();
             MasaRenklendir();
             
         }

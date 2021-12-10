@@ -15,10 +15,12 @@ namespace KafeAdisyon.Forms
 {
     public partial class frmSiparis : Form
     {
-        public frmSiparis()
+        public frmSiparis(KafeGorunumForm kafeGorunumForm)
         {
             InitializeComponent();
+            a = kafeGorunumForm;
         }
+        public KafeGorunumForm a;
         public Masa SeciliMasa { get; set; }
         public List<Siparis> MasaninSiparisleri { get; set; }
         private KategoriRepostory _kategoriRepostory;
@@ -97,7 +99,7 @@ namespace KafeAdisyon.Forms
             Siparis seciliSiparis = new Siparis();
             foreach (Siparis item in MasaninSiparisleri)
             {
-                Siparis siparis = _siparisRepostory.Get(new [] { "Urun" }, siparis => siparis.Id == item.Id).First();
+                Siparis siparis = _siparisRepostory.Get(new [] { "Urun" }, a => a.UrunId == item.Urun.Id).First();
                 if (siparis.Urun.Id == _seciliUrun.Id)
                 {
                     seciliSiparis = siparis;
@@ -120,15 +122,15 @@ namespace KafeAdisyon.Forms
                     MasaId = SeciliMasa.Id
                 };
                 _siparisRepostory.Add(yeniSiparis);
-            }
-
-            
+            }           
             ListeyiDoldur();
-
         }
 
         private void ListeyiDoldur()
         {
+            this.MasaninSiparisleri = _siparisRepostory
+                .Get(new[] { "Masa" }, x => x.Masa.Id == this.SeciliMasa.Id && x.Masa.MasaDurumu == true)
+                .ToList();
             lstSiparis.Columns.Clear();
             lstSiparis.Items.Clear();
             lstSiparis.View = View.Details;
@@ -137,10 +139,11 @@ namespace KafeAdisyon.Forms
             lstSiparis.Columns.Add("Ara Toplam");
             foreach (Siparis item in MasaninSiparisleri)
             {
-                var siparis = _siparisRepostory.Get(new[] { "Urun" }, x => x.Id == item.Id).First();
+                //------>
+                var siparis = _siparisRepostory.Get(new[] { "Urun" }, x => x.Urun.Id == item.UrunId && x.Masa.Id == item.MasaId).First();
                 ListViewItem viewItem = new ListViewItem(siparis.Adet.ToString());
                 viewItem.SubItems.Add(siparis.Urun.Ad);
-                viewItem.SubItems.Add($"{siparis.AraToplam:c2}");
+                viewItem.SubItems.Add($"{siparis.Adet*siparis.Fiyat:c2}");
                 lstSiparis.Items.Add(viewItem);
             }
 
@@ -150,6 +153,7 @@ namespace KafeAdisyon.Forms
             {
                 toplam += item.Fiyat*item.Adet;
             }
+            a.toplamTutar = toplam;
             lblToplam.Text = $"{toplam:c2}";
         }
 
@@ -163,6 +167,8 @@ namespace KafeAdisyon.Forms
         {
             this.DialogResult = DialogResult.Abort;
             this.Close();
+            this.SeciliMasa.MasaDurumu = false;
+            _masaRepostory.Update(this.SeciliMasa);
         }
     }
 }
