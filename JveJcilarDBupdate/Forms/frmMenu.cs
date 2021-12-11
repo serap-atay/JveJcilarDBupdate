@@ -57,7 +57,6 @@ namespace KafeAdisyon.Forms
             _seciliUrun = lstUrunler.SelectedItem as Urun;
             Kategori kategori = _kategoriRepo.GetById(_seciliUrun.KategoriId);
             lstKategori.SelectedItem = kategori;
-            //lstKategori.SelectedItem = _seciliUrun.Kategori;
             txtUrunAdi.Text = _seciliUrun.Ad;
             nFiyat.Value = _seciliUrun.Fiyat;
             pbUrun.Image = null;

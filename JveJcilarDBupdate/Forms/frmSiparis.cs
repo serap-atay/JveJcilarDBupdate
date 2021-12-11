@@ -1,11 +1,8 @@
-﻿//using KafeAdisyon.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-//using KafeAdisyon.Business;
-//using KafeAdisyon.Data;
 using System.Collections;
 using JveJcilarDBupdate.Models;
 using JveJcilarDBupdate.Repostory;
@@ -18,9 +15,9 @@ namespace KafeAdisyon.Forms
         public frmSiparis(KafeGorunumForm kafeGorunumForm)
         {
             InitializeComponent();
-            a = kafeGorunumForm;
+            this.kafeGorunumForm = kafeGorunumForm;
         }
-        public KafeGorunumForm a;
+        public KafeGorunumForm kafeGorunumForm;
         public Masa SeciliMasa { get; set; }
         public List<Siparis> MasaninSiparisleri { get; set; }
         private KategoriRepostory _kategoriRepostory;
@@ -33,7 +30,6 @@ namespace KafeAdisyon.Forms
             _masaRepostory = new MasaRepostory();
             _kategoriRepostory = new KategoriRepostory();
             _siparisRepostory = new SiparisRepostory();
-            MasaninSiparisleri = _siparisRepostory.Get(new[] { "Masa" }, x => x.MasaId == SeciliMasa.Id && x.Masa.MasaDurumu == true).ToList();
             _urunRepostory = new UrunRepostory();
             List<Kategori> kategoriler = _kategoriRepostory.Get().ToList();
             flpKategori.Controls.Clear();
@@ -56,14 +52,12 @@ namespace KafeAdisyon.Forms
                 flpKategori.Controls.Add(btn);
             }
             lstSiparis.FullRowSelect = true;
-
             ListeyiDoldur();
         }
         private Kategori _seciliKategori;
         private void KategoriBtn_Click(object sender, EventArgs e)
         {
             Button seciliButton = sender as Button;
-
             _seciliKategori = seciliButton.Tag as Kategori;
             //List<Urun> urunler = _seciliKategori.Urunler.ToList();
             List<Urun> urunler = _urunRepostory.Get(urun => urun.KategoriId == _seciliKategori.Id).ToList();
@@ -93,6 +87,7 @@ namespace KafeAdisyon.Forms
         {
             Button seciliButton = (Button)sender;
             _seciliUrun = seciliButton.Tag as Urun;
+            //her seferinde veritabanında güncelleme yapmamalı
             SeciliMasa.MasaDurumu = true;
             _masaRepostory.Update(SeciliMasa);
             bool varMi = false;
@@ -143,7 +138,7 @@ namespace KafeAdisyon.Forms
                 var siparis = _siparisRepostory.Get(new[] { "Urun" }, x => x.Urun.Id == item.UrunId && x.Masa.Id == item.MasaId).First();
                 ListViewItem viewItem = new ListViewItem(siparis.Adet.ToString());
                 viewItem.SubItems.Add(siparis.Urun.Ad);
-                viewItem.SubItems.Add($"{siparis.Adet*siparis.Fiyat:c2}");
+                viewItem.SubItems.Add($"{siparis.AraToplam:c2}");
                 lstSiparis.Items.Add(viewItem);
             }
 
@@ -151,9 +146,9 @@ namespace KafeAdisyon.Forms
             decimal toplam = 0;
             foreach (Siparis item in MasaninSiparisleri)
             {
-                toplam += item.Fiyat*item.Adet;
+                toplam += item.AraToplam;
             }
-            a.toplamTutar = toplam;
+            kafeGorunumForm.toplamTutar = toplam;
             lblToplam.Text = $"{toplam:c2}";
         }
 

@@ -51,6 +51,7 @@ namespace JavaVeJavacilar.Forms
                 Kod = txtKod.Text,
                 KafeBilgiId = (cmbKafeBilgisi.SelectedItem as KafeBilgi).Id
             };
+            katRepostory.Add(yeniKat);
             int adet = int.Parse(txtMasaSayisi.Text);
             for (int i = 0; i < adet; i++)
             {
@@ -63,7 +64,6 @@ namespace JavaVeJavacilar.Forms
                 yeniMasa.KatId = yeniKat.Id;
                 masaRepostory.Add(yeniMasa);
             }
-            katRepostory.Add(yeniKat);
             Temizle();
             ListeyiDoldur();
         }

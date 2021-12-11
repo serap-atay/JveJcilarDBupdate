@@ -123,14 +123,9 @@ namespace KafeAdisyon.Forms
                 {
                     _siparisRepository.Remove(item);
                 }
-                seciliButton.BackColor = defaultKatColor;                
-                //foreach (var siparis in masaninSiparisleri)
-                //{
-                //    siparis.Masa.MasaDurumu = false;
-                //}
-                //_siparisRepository.Update();
+                seciliButton.BackColor = defaultKatColor;
             }
-            _siparisRepository.Update(); //gereksiz
+            _siparisRepository.Update();
             _masaRepostory.Update();
             MasaRenklendir();
             
