@@ -148,7 +148,6 @@ namespace KafeAdisyon.Forms
             {
                 toplam += item.AraToplam;
             }
-            kafeGorunumForm.toplamTutar = toplam;
             lblToplam.Text = $"{toplam:c2}";
         }
 

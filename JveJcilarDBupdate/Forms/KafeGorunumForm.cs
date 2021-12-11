@@ -18,7 +18,6 @@ namespace KafeAdisyon.Forms
         {
             InitializeComponent();
         }
-        public decimal toplamTutar;
         private MasaRepostory _masaRepostory;
         private KatRepostory _katRepostory;
         private SiparisRepostory _siparisRepository;
