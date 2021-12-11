@@ -35,6 +35,8 @@ namespace JveJcilarDBupdate
             this.kafeBilgiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menüToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kafeGörünümToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.günlükRaporToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aylıkRaporToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +48,9 @@ namespace JveJcilarDBupdate
             this.katAyarlaToolStripMenuItem1,
             this.kafeBilgiToolStripMenuItem,
             this.menüToolStripMenuItem,
-            this.kafeGörünümToolStripMenuItem});
+            this.kafeGörünümToolStripMenuItem,
+            this.günlükRaporToolStripMenuItem,
+            this.aylıkRaporToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 38);
@@ -86,6 +90,20 @@ namespace JveJcilarDBupdate
             this.kafeGörünümToolStripMenuItem.Text = "Kafe Görünüm";
             this.kafeGörünümToolStripMenuItem.Click += new System.EventHandler(this.kafeGörünümToolStripMenuItem_Click);
             // 
+            // günlükRaporToolStripMenuItem
+            // 
+            this.günlükRaporToolStripMenuItem.Name = "günlükRaporToolStripMenuItem";
+            this.günlükRaporToolStripMenuItem.Size = new System.Drawing.Size(156, 34);
+            this.günlükRaporToolStripMenuItem.Text = "Günlük Rapor";
+            this.günlükRaporToolStripMenuItem.Click += new System.EventHandler(this.günlükRaporToolStripMenuItem_Click);
+            // 
+            // aylıkRaporToolStripMenuItem
+            // 
+            this.aylıkRaporToolStripMenuItem.Name = "aylıkRaporToolStripMenuItem";
+            this.aylıkRaporToolStripMenuItem.Size = new System.Drawing.Size(135, 34);
+            this.aylıkRaporToolStripMenuItem.Text = "Aylık Rapor";
+            this.aylıkRaporToolStripMenuItem.Click += new System.EventHandler(this.aylıkRaporToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -110,6 +128,8 @@ namespace JveJcilarDBupdate
         private System.Windows.Forms.ToolStripMenuItem kafeBilgiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menüToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kafeGörünümToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem günlükRaporToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aylıkRaporToolStripMenuItem;
     }
 }
 

@@ -28,12 +28,18 @@ namespace JveJcilarDBupdate.Data
         public DbSet<Kategori> Urunler { get; set; }
         public DbSet<Kategori> Siparisler { get; set; }
         public DbSet<Kategori> Masalar { get; set; }
+        public DbSet<Rapor> Raporlar { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Urun>()
                 .Property(x => x.Fiyat)
                 .HasPrecision(10, 2);
+            modelBuilder.Entity<Urun>()
+                .HasIndex(x => x.Ad)
+                .IsUnique();
+            modelBuilder.Entity<Rapor>()
+                .HasIndex(x => x.UrunAdi);
             modelBuilder.Entity<Siparis>()
                 .Property(x => x.Fiyat)
                 .HasPrecision(10, 2);

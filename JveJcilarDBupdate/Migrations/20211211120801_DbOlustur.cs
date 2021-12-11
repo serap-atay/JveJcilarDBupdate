@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace JveJcilarDBupdate.Migrations
 {
-    public partial class CreateJveJDB : Migration
+    public partial class DbOlustur : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -39,13 +39,29 @@ namespace JveJcilarDBupdate.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Raporlar",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UrunAdi = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
+                    Fiyat = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Adet = table.Column<int>(type: "int", nullable: false),
+                    EklenmeZamani = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Raporlar", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Katlar",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Ad = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: true),
-                    KafeBilgiId = table.Column<int>(type: "int", nullable: false),
+                    KafeBilgiId = table.Column<int>(type: "int", nullable: true),
                     Sira = table.Column<int>(type: "int", nullable: false),
                     Kod = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: true),
                     EklenmeZamani = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -58,7 +74,7 @@ namespace JveJcilarDBupdate.Migrations
                         column: x => x.KafeBilgiId,
                         principalTable: "KafeBilgileri",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -146,9 +162,23 @@ namespace JveJcilarDBupdate.Migrations
                 column: "KatId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Raporlar_UrunAdi",
+                table: "Raporlar",
+                column: "UrunAdi",
+                unique: true,
+                filter: "[UrunAdi] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Siparisler_UrunId",
                 table: "Siparisler",
                 column: "UrunId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Urunler_Ad",
+                table: "Urunler",
+                column: "Ad",
+                unique: true,
+                filter: "[Ad] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Urunler_KategoriId",
@@ -158,6 +188,9 @@ namespace JveJcilarDBupdate.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Raporlar");
+
             migrationBuilder.DropTable(
                 name: "Siparisler");
 

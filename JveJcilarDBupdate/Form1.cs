@@ -1,5 +1,7 @@
 ﻿using JavaVeJavacilar.Forms;
 using JveJcilarDBupdate.Forms;
+using JveJcilarDBupdate.Models;
+using JveJcilarDBupdate.Repostory;
 using KafeAdisyon.Forms;
 using System;
 using System.Collections.Generic;
@@ -20,7 +22,6 @@ namespace JveJcilarDBupdate
             InitializeComponent();
         }
         private frmKatlar frmKatlar;
-
         private void katAyarlaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (frmKatlar == null || frmKatlar.IsDisposed)
@@ -63,6 +64,28 @@ namespace JveJcilarDBupdate
             frmKafeGorunum.MdiParent = this;
             frmKafeGorunum.WindowState = FormWindowState.Maximized;
             frmKafeGorunum.Show();
+        }
+        frmGunlukRapor frmGunlukRapor;
+        private void günlükRaporToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmGunlukRapor == null || frmGunlukRapor.IsDisposed)
+            {
+                frmGunlukRapor = new frmGunlukRapor();
+            }
+            frmGunlukRapor.MdiParent = this;
+            frmGunlukRapor.WindowState = FormWindowState.Maximized;
+            frmGunlukRapor.Show();
+        }
+        frmAylikRapor frmAylikRapor;
+        private void aylıkRaporToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (frmAylikRapor == null || frmAylikRapor.IsDisposed)
+            {
+                frmAylikRapor = new frmAylikRapor();
+            }
+            frmAylikRapor.MdiParent = this;
+            frmAylikRapor.WindowState = FormWindowState.Maximized;
+            frmAylikRapor.Show();
         }
     }
 }

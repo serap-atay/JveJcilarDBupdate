@@ -21,12 +21,14 @@ namespace KafeAdisyon.Forms
         private MasaRepostory _masaRepostory;
         private KatRepostory _katRepostory;
         private SiparisRepostory _siparisRepository;
+        private RaporRepostory _raporRepostory;
         Color seciliKatColor = Color.Coral, defaultKatColor = Color.CornflowerBlue;
         private void KafeGorunumForm_Load(object sender, EventArgs e)
         {
             _katRepostory = new KatRepostory();
             _siparisRepository = new SiparisRepostory();
             _masaRepostory = new MasaRepostory();
+            _raporRepostory = new RaporRepostory();
             List<Kat> katlar = _katRepostory
                 .Get()
                 .OrderBy(x => x.Sira)
@@ -113,9 +115,16 @@ namespace KafeAdisyon.Forms
             {
                 _siparisRepository = new SiparisRepostory();
                 var silinecekSiparisler = _siparisRepository.Get(new[] { "Masa", "Urun" }, siparis => siparis.MasaId == _frmSiparis.SeciliMasa.Id).ToList();
-                MessageBox.Show($"Masa kapatıldı: {silinecekSiparisler.Sum(x => x.AraToplam):c2} Tutar Tahsil edildi.");               
+                MessageBox.Show($"Masa kapatıldı: {silinecekSiparisler.Sum(x => x.AraToplam):c2} Tutar Tahsil edildi.");
                 foreach (var item in silinecekSiparisler)
                 {
+                    var rapor = new Rapor
+                    {
+                        UrunAdi = item.Urun.Ad,
+                        Adet = item.Adet,
+                        Fiyat = item.Fiyat
+                    };
+                    _raporRepostory.Add(rapor);
                     _siparisRepository.Remove(item);
                 }
                 seciliButton.BackColor = defaultKatColor;

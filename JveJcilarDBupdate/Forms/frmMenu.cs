@@ -134,6 +134,7 @@ namespace KafeAdisyon.Forms
                 yeniUrun.Fotograf = resimStream.ToArray();
             }
             _urunRepo.Add(yeniUrun);
+            pbUrun.Image = null;
             UrunDoldur();
         }
 
@@ -157,12 +158,12 @@ namespace KafeAdisyon.Forms
             _seciliUrun.Ad = txtUrunAdi.Text;
             _seciliUrun.Fiyat = nFiyat.Value;
             _seciliUrun.KategoriId = _seciliKategori.Id;
-            if (pbUrun.Image != null)
-            {
-                MemoryStream resimStream = new MemoryStream();
-                pbUrun.Image.Save(resimStream, ImageFormat.Jpeg);
-                _seciliUrun.Fotograf = resimStream.ToArray();
-            }
+            //if (pbUrun.Image != null)
+            //{
+            //    MemoryStream resimStream = new MemoryStream();
+            //    pbUrun.Image.Save(resimStream, ImageFormat.Jpeg);
+            //    _seciliUrun.Fotograf = resimStream.ToArray();
+            //}
             _urunRepo.Update(_seciliUrun);
             UrunDoldur();
         }

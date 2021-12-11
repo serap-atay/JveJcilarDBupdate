@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JveJcilarDBupdate.Migrations
 {
     [DbContext(typeof(CafeContext))]
-    [Migration("20211208084120_KafeBilgiBos")]
-    partial class KafeBilgiBos
+    [Migration("20211211120801_DbOlustur")]
+    partial class DbOlustur
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -131,6 +131,35 @@ namespace JveJcilarDBupdate.Migrations
                     b.ToTable("Masalar");
                 });
 
+            modelBuilder.Entity("JveJcilarDBupdate.Models.Rapor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Adet")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("EklenmeZamani")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Fiyat")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("UrunAdi")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UrunAdi")
+                        .IsUnique()
+                        .HasFilter("[UrunAdi] IS NOT NULL");
+
+                    b.ToTable("Raporlar");
+                });
+
             modelBuilder.Entity("JveJcilarDBupdate.Models.Siparis", b =>
                 {
                     b.Property<int>("MasaId")
@@ -185,6 +214,10 @@ namespace JveJcilarDBupdate.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Ad")
+                        .IsUnique()
+                        .HasFilter("[Ad] IS NOT NULL");
+
                     b.HasIndex("KategoriId");
 
                     b.ToTable("Urunler");
@@ -192,11 +225,11 @@ namespace JveJcilarDBupdate.Migrations
 
             modelBuilder.Entity("JveJcilarDBupdate.Models.Kat", b =>
                 {
-                    b.HasOne("JveJcilarDBupdate.Models.KafeBilgi", "kafeBilgi")
+                    b.HasOne("JveJcilarDBupdate.Models.KafeBilgi", "KafeBilgi")
                         .WithMany("Katlar")
                         .HasForeignKey("KafeBilgiId");
 
-                    b.Navigation("kafeBilgi");
+                    b.Navigation("KafeBilgi");
                 });
 
             modelBuilder.Entity("JveJcilarDBupdate.Models.Masa", b =>
