@@ -74,10 +74,8 @@ namespace KafeAdisyon.Forms
                 if (button.Text == seciliButton.Text)
                     button.BackColor = seciliKatColor;
             }
-
             MasaRenklendir();
         }
-
         private void MasaRenklendir()
         {
             var mevcutSiparisler = _siparisRepository.Get(new[] { "Masa" }, x => x.Masa.MasaDurumu == true);
@@ -90,7 +88,6 @@ namespace KafeAdisyon.Forms
                 }
             }
         }
-
         private frmSiparis _frmSiparis;
         private void BtnMasa_Click(object sender, EventArgs e)
         {            
@@ -110,22 +107,23 @@ namespace KafeAdisyon.Forms
             if (result == DialogResult.OK)
             {
                 seciliButton.BackColor = seciliKatColor;
+                return;
             }
             else if (result == DialogResult.Abort)
             {
                 _siparisRepository = new SiparisRepostory();
                 var silinecekSiparisler = _siparisRepository.Get(new[] { "Masa", "Urun" }, siparis => siparis.MasaId == _frmSiparis.SeciliMasa.Id).ToList();
-                MessageBox.Show($"Masa kapatıldı: {silinecekSiparisler.Sum(x => x.AraToplam):c2} Tutar Tahsil edildi.");
+                MessageBox.Show($"Masa kapatıldı: {silinecekSiparisler.Sum(x => x.AraToplam):c2} Tutar Tahsil edildi.");               
                 foreach (var item in silinecekSiparisler)
                 {
-                    ///////////////////////////////
                     _siparisRepository.Remove(item);
                 }
                 seciliButton.BackColor = defaultKatColor;
             }
             _siparisRepository.Update();
             _masaRepostory.Update();
-            MasaRenklendir();            
+            MasaRenklendir();
+            
         }
     }
 }
