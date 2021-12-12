@@ -25,10 +25,11 @@ namespace JveJcilarDBupdate
         private frmKatlar frmKatlar;
         private void katAyarlaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (frmKatlar == null || frmKatlar.IsDisposed)
-            {
-                frmKatlar = new frmKatlar();
-            }
+            //if (frmKatlar == null || frmKatlar.IsDisposed)
+            //{
+            //    frmKatlar = new frmKatlar();
+            //}
+            frmKatlar = new frmKatlar();
             frmKatlar.MdiParent = this;
             frmKatlar.WindowState = FormWindowState.Maximized;
             frmKatlar.Show();
@@ -36,10 +37,11 @@ namespace JveJcilarDBupdate
         frmKafeBilgi frmKafeBilgi;
         private void kafeBilgiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (frmKafeBilgi == null || frmKafeBilgi.IsDisposed)
-            {
-                frmKafeBilgi = new frmKafeBilgi();
-            }
+            //if (frmKafeBilgi == null || frmKafeBilgi.IsDisposed)
+            //{
+            //    frmKafeBilgi = new frmKafeBilgi();
+            //}
+            frmKafeBilgi = new frmKafeBilgi();
             frmKafeBilgi.MdiParent = this;
             frmKafeBilgi.WindowState = FormWindowState.Maximized;
             frmKafeBilgi.Show();
@@ -47,10 +49,11 @@ namespace JveJcilarDBupdate
         frmMenu frmMenu;
         private void menüToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (frmMenu == null || frmMenu.IsDisposed)
-            {
-                frmMenu = new frmMenu();
-            }
+            //if (frmMenu == null || frmMenu.IsDisposed)
+            //{
+            //    frmMenu = new frmMenu();
+            //}
+            frmMenu = new frmMenu();
             frmMenu.MdiParent = this;
             frmMenu.WindowState = FormWindowState.Maximized;
             frmMenu.Show();

@@ -44,26 +44,39 @@ namespace JavaVeJavacilar.Forms
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
-            Kat yeniKat = new Kat()
+            if(cmbKafeBilgisi.SelectedItem == null)
             {
-                Ad = txtKatAdi.Text,
-                Sira = int.Parse(txtSira.Text),
-                Kod = txtKod.Text,
-                KafeBilgiId = (cmbKafeBilgisi.SelectedItem as KafeBilgi).Id
-            };
-            katRepostory.Add(yeniKat);
-            int adet = int.Parse(txtMasaSayisi.Text);
-            for (int i = 0; i < adet; i++)
-            {
-                Masa yeniMasa = new Masa()
-                {
-                    Sira = i + 1,
-                    Ad = $"{yeniKat.Kod}/Masa {i + 1}"
-                };
-                //yeniKat.Masalar.Add(yeniMasa);
-                yeniMasa.KatId = yeniKat.Id;
-                masaRepostory.Add(yeniMasa);
+                MessageBox.Show($"Bir kafe bilgisi seçmelisiniz.");
+                return;
             }
+            try
+            {
+                Kat yeniKat = new Kat()
+                {
+                    Ad = txtKatAdi.Text,
+                    Sira = int.Parse(txtSira.Text),
+                    Kod = txtKod.Text,
+                    KafeBilgiId = (cmbKafeBilgisi.SelectedItem as KafeBilgi).Id
+                };
+                int adet = int.Parse(txtMasaSayisi.Text);
+                katRepostory.Add(yeniKat);
+                for (int i = 0; i < adet; i++)
+                {
+                    Masa yeniMasa = new Masa()
+                    {
+                        Sira = i + 1,
+                        Ad = $"{yeniKat.Kod}/Masa {i + 1}"
+                    };
+                    //yeniKat.Masalar.Add(yeniMasa);
+                    yeniMasa.KatId = yeniKat.Id;
+                    masaRepostory.Add(yeniMasa);
+                }               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
             Temizle();
             ListeyiDoldur();
         }
@@ -139,6 +152,7 @@ namespace JavaVeJavacilar.Forms
             txtKatAdi.Text = "";
             txtKod.Text = "";
             txtSira.Text = "";
+            txtMasaSayisi.Text = "";
             cmbKafeBilgisi.SelectedIndex = -1;
             lstKatlar.SelectedIndex = -1;
         }

@@ -43,9 +43,15 @@ namespace JveJcilarDBupdate.Forms
             if (pbLogo.Image != null)
             {
                 MemoryStream resimStream = new MemoryStream();
-                pbLogo.Image.Save(resimStream, ImageFormat.Jpeg);
+                try
+                {
+                    pbLogo.Image.Save(resimStream, ImageFormat.Jpeg);
+                    kafeBilgi.Logo = resimStream.ToArray();
+                }
+                catch (Exception)
+                {
+                }
 
-                kafeBilgi.Logo = resimStream.ToArray();
             }
             kafeBilgiRepostory.Add(kafeBilgi);
             ListeyiDoldur();
@@ -86,7 +92,10 @@ namespace JveJcilarDBupdate.Forms
 
         private void btnSil_Click(object sender, EventArgs e)
         {
-
+            if (_seciliKafeBilgi == null) return;
+            kafeBilgiRepostory.Remove(_seciliKafeBilgi);
+            ListeyiDoldur();
+            pbLogo.Image = null;
         }
 
         private void btnGuncelle_Click(object sender, EventArgs e)

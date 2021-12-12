@@ -22,12 +22,14 @@ namespace KafeAdisyon.Forms
         }
         private KategoriRepostory _kategoriRepo;
         private UrunRepostory _urunRepo;
+        private SiparisRepostory _siparisRepostory;
 
 
         private void MenuForm_Load(object sender, EventArgs e)
         {
             _kategoriRepo = new();
             _urunRepo = new();
+            _siparisRepostory = new();
             KategoriDoldur();
         }
         private void KategoriDoldur()
@@ -195,7 +197,14 @@ namespace KafeAdisyon.Forms
 
         private void btnUrunSil_Click(object sender, EventArgs e)
         {
+
             if (_seciliUrun == null) return;
+            var result = _siparisRepostory.Get(a => a.UrunId == _seciliUrun.Id).FirstOrDefault();
+            if(result != null)
+            {
+                MessageBox.Show($"Siparişi tamamlanmamış ürünü silemezsin.");
+                return;
+            }
             _urunRepo.Remove(_seciliUrun);
             KategoriDoldur();
         }

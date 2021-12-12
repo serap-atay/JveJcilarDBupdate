@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace JveJcilarDBupdate.Abstracts.Repostory
 {
@@ -57,7 +58,22 @@ namespace JveJcilarDBupdate.Abstracts.Repostory
 
         public virtual int Save()
         {
-            return _context.SaveChanges();
+            try
+            {
+                return _context.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                MessageBox.Show(ex.InnerException.Message, "İşlem tamamlanamadı.");
+                return -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,"İşlem tamamlanamadı.");
+                return -1;
+            }
+
+
         }
 
         public virtual void Update(bool isSaveLater = false)

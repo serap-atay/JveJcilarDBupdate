@@ -57,6 +57,7 @@ namespace JveJcilarDBupdate.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::JveJcilarDBupdate.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dgvGunlukRapor);
             this.Controls.Add(this.btnGunlukRapor);

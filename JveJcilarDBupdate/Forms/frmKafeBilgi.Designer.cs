@@ -42,12 +42,15 @@ namespace JveJcilarDBupdate.Forms
             // 
             // btnEkle
             // 
+            this.btnEkle.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnEkle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnEkle.ForeColor = System.Drawing.Color.Goldenrod;
             this.btnEkle.Location = new System.Drawing.Point(228, 334);
             this.btnEkle.Name = "btnEkle";
-            this.btnEkle.Size = new System.Drawing.Size(83, 34);
+            this.btnEkle.Size = new System.Drawing.Size(87, 61);
             this.btnEkle.TabIndex = 0;
             this.btnEkle.Text = "Ekle";
-            this.btnEkle.UseVisualStyleBackColor = true;
+            this.btnEkle.UseVisualStyleBackColor = false;
             this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
             // txtKafeAd
@@ -70,6 +73,8 @@ namespace JveJcilarDBupdate.Forms
             // 
             // lstKafeBilgi
             // 
+            this.lstKafeBilgi.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.lstKafeBilgi.ForeColor = System.Drawing.Color.Goldenrod;
             this.lstKafeBilgi.FormattingEnabled = true;
             this.lstKafeBilgi.ItemHeight = 15;
             this.lstKafeBilgi.Location = new System.Drawing.Point(688, 23);
@@ -81,7 +86,9 @@ namespace JveJcilarDBupdate.Forms
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.Goldenrod;
             this.label1.Location = new System.Drawing.Point(70, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(109, 25);
@@ -91,7 +98,9 @@ namespace JveJcilarDBupdate.Forms
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.Goldenrod;
             this.label2.Location = new System.Drawing.Point(56, 97);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(123, 25);
@@ -100,22 +109,28 @@ namespace JveJcilarDBupdate.Forms
             // 
             // btnSil
             // 
+            this.btnSil.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnSil.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSil.ForeColor = System.Drawing.Color.Goldenrod;
             this.btnSil.Location = new System.Drawing.Point(478, 334);
             this.btnSil.Name = "btnSil";
-            this.btnSil.Size = new System.Drawing.Size(88, 34);
+            this.btnSil.Size = new System.Drawing.Size(88, 61);
             this.btnSil.TabIndex = 6;
             this.btnSil.Text = "Sil";
-            this.btnSil.UseVisualStyleBackColor = true;
+            this.btnSil.UseVisualStyleBackColor = false;
             this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
             // btnGuncelle
             // 
-            this.btnGuncelle.Location = new System.Drawing.Point(353, 334);
+            this.btnGuncelle.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnGuncelle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnGuncelle.ForeColor = System.Drawing.Color.Goldenrod;
+            this.btnGuncelle.Location = new System.Drawing.Point(347, 334);
             this.btnGuncelle.Name = "btnGuncelle";
-            this.btnGuncelle.Size = new System.Drawing.Size(89, 34);
+            this.btnGuncelle.Size = new System.Drawing.Size(103, 61);
             this.btnGuncelle.TabIndex = 7;
             this.btnGuncelle.Text = "Güncelle";
-            this.btnGuncelle.UseVisualStyleBackColor = true;
+            this.btnGuncelle.UseVisualStyleBackColor = false;
             this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
             // 
             // frmKafeBilgi
