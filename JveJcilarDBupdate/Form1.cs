@@ -20,6 +20,7 @@ namespace JveJcilarDBupdate
         public Form1()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
         }
         private frmKatlar frmKatlar;
         private void katAyarlaToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -57,10 +58,11 @@ namespace JveJcilarDBupdate
         KafeGorunumForm frmKafeGorunum;
         private void kafeGörünümToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (frmKafeGorunum == null || frmKafeGorunum.IsDisposed)
-            {
-                frmKafeGorunum = new KafeGorunumForm();
-            }
+            //if (frmKafeGorunum == null || frmKafeGorunum.IsDisposed)
+            //{
+            //    frmKafeGorunum = new KafeGorunumForm();
+            //}
+            frmKafeGorunum = new KafeGorunumForm();
             frmKafeGorunum.MdiParent = this;
             frmKafeGorunum.WindowState = FormWindowState.Maximized;
             frmKafeGorunum.Show();

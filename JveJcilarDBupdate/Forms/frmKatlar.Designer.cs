@@ -29,7 +29,6 @@ namespace JavaVeJavacilar.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmKatlar));
             this.label1 = new System.Windows.Forms.Label();
             this.txtKatAdi = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -233,7 +232,6 @@ namespace JavaVeJavacilar.Forms
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.Goldenrod;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "frmKatlar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

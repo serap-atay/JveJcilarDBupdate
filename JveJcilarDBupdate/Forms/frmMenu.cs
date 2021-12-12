@@ -48,6 +48,17 @@ namespace KafeAdisyon.Forms
             if (lstKategori.SelectedItem == null) return;
             _seciliKategori = lstKategori.SelectedItem as Kategori;
             txtKategoriAdi.Text = _seciliKategori.Ad;
+            pbKategori.Image = null;
+            if (_seciliKategori.Fotograf != null)
+            {
+                byte[] imageSource = _seciliKategori.Fotograf;
+                Bitmap image;
+                using (MemoryStream stream = new MemoryStream(imageSource))
+                {
+                    image = new Bitmap(stream);
+                }
+                pbKategori.Image = image;
+            }
             UrunDoldur();
         }
         private Urun _seciliUrun;
@@ -143,10 +154,17 @@ namespace KafeAdisyon.Forms
             if (_seciliKategori == null) return;
             _seciliKategori.Ad = txtKategoriAdi.Text;
             if (pbKategori.Image != null)
-            {
+            {                
                 MemoryStream resimStream = new MemoryStream();
-                pbKategori.Image.Save(resimStream, ImageFormat.Jpeg);
-                _seciliKategori.Fotograf = resimStream.ToArray();
+                try
+                {
+                    pbKategori.Image.Save(resimStream, ImageFormat.Jpeg);
+                    _seciliKategori.Fotograf = resimStream.ToArray();
+                }
+                catch (Exception)
+                {
+                    
+                }              
             }
             _kategoriRepo.Update(_seciliKategori);
             KategoriDoldur();
@@ -158,12 +176,19 @@ namespace KafeAdisyon.Forms
             _seciliUrun.Ad = txtUrunAdi.Text;
             _seciliUrun.Fiyat = nFiyat.Value;
             _seciliUrun.KategoriId = _seciliKategori.Id;
-            //if (pbUrun.Image != null)
-            //{
-            //    MemoryStream resimStream = new MemoryStream();
-            //    pbUrun.Image.Save(resimStream, ImageFormat.Jpeg);
-            //    _seciliUrun.Fotograf = resimStream.ToArray();
-            //}
+            if (pbUrun.Image != null)
+            {
+                MemoryStream resimStream = new MemoryStream();
+                try
+                {
+                    pbUrun.Image.Save(resimStream, ImageFormat.Jpeg);
+                    _seciliUrun.Fotograf = resimStream.ToArray();
+                }
+                catch (Exception)
+                {
+
+                }
+            }
             _urunRepo.Update(_seciliUrun);
             UrunDoldur();
         }
