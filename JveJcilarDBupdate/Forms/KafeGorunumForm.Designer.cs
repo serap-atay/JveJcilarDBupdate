@@ -31,6 +31,8 @@ namespace KafeAdisyon.Forms
         {
             this.flpKatlar = new System.Windows.Forms.FlowLayoutPanel();
             this.flpMasalar = new System.Windows.Forms.FlowLayoutPanel();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.SuspendLayout();
             // 
             // flpKatlar
@@ -41,7 +43,6 @@ namespace KafeAdisyon.Forms
             this.flpKatlar.Padding = new System.Windows.Forms.Padding(9, 8, 9, 8);
             this.flpKatlar.Size = new System.Drawing.Size(1094, 94);
             this.flpKatlar.TabIndex = 0;
-
             // 
             // flpMasalar
             // 
@@ -50,6 +51,14 @@ namespace KafeAdisyon.Forms
             this.flpMasalar.Name = "flpMasalar";
             this.flpMasalar.Size = new System.Drawing.Size(1094, 393);
             this.flpMasalar.TabIndex = 1;
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // KafeGorunumForm
             // 
@@ -70,5 +79,7 @@ namespace KafeAdisyon.Forms
 
         private System.Windows.Forms.FlowLayoutPanel flpKatlar;
         private System.Windows.Forms.FlowLayoutPanel flpMasalar;
+        private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }

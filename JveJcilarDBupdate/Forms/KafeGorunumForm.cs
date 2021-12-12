@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace KafeAdisyon.Forms
@@ -91,6 +92,54 @@ namespace KafeAdisyon.Forms
             }
         }
         private frmSiparis _frmSiparis;
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            //Yazı fontumu ve çizgi çizmek için fırçamı ve kalem nesnemi oluşturdum
+            Font Font = new Font("Calibri", 20);
+            SolidBrush sbrush = new SolidBrush(Color.Black);
+            Pen myPen = new Pen(Color.Black);
+
+            //Bu kısımda sipariş formu yazısını ve çizgileri yazdırıyorum
+            e.Graphics.DrawLine(myPen, 120, 120, 750, 120);
+            e.Graphics.DrawLine(myPen, 120, 160, 750, 160);
+            e.Graphics.DrawString(DateTime.Now.ToString("MM/dd/yyyy HH:mm") + " tarihli " + _frmSiparis.SeciliMasa.Ad + " Adisyonu", Font, sbrush, 140, 120);
+
+            e.Graphics.DrawLine(myPen, 120, 320, 750, 320);
+
+            Font = new Font("Calibri", 12, FontStyle.Bold);
+            e.Graphics.DrawString("Adet", Font, sbrush, 140, 324);
+            e.Graphics.DrawString("Ürün Adı", Font, sbrush, 240, 324);
+            e.Graphics.DrawString("Birim Fiyatı", Font, sbrush, 440, 324);
+            e.Graphics.DrawString("Fiyat", Font, sbrush, 640, 324);
+
+            e.Graphics.DrawLine(myPen, 120, 348, 750, 348);
+
+            int y = 360;
+
+            StringFormat myStringFormat = new StringFormat();
+            myStringFormat.Alignment = StringAlignment.Far;
+
+            decimal gTotal = 0;
+
+            foreach (var item in silinecekSiparisler)
+            {
+                e.Graphics.DrawString(item.Adet.ToString(), Font, sbrush, 170, y, myStringFormat);
+                e.Graphics.DrawString(item.Urun.Ad, Font, sbrush, 240, y);
+                decimal bFiyat = item.Fiyat;
+                decimal fiyat = item.AraToplam;
+                gTotal += fiyat;
+                e.Graphics.DrawString(bFiyat.ToString("c"), Font, sbrush, 490, y, myStringFormat);
+                e.Graphics.DrawString(fiyat.ToString("c"), Font, sbrush, 690, y, myStringFormat);
+
+                y += 20;
+
+            }
+
+            e.Graphics.DrawLine(myPen, 120, y, 750, y);
+            e.Graphics.DrawString(gTotal.ToString("c"), Font, sbrush, 690, y + 10, myStringFormat);
+        }
+        List<Siparis> silinecekSiparisler;
         private void BtnMasa_Click(object sender, EventArgs e)
         {            
             Button seciliButton = sender as Button;
@@ -114,8 +163,17 @@ namespace KafeAdisyon.Forms
             else if (result == DialogResult.Abort)
             {
                 _siparisRepository = new SiparisRepostory();
-                var silinecekSiparisler = _siparisRepository.Get(new[] { "Masa", "Urun" }, siparis => siparis.MasaId == _frmSiparis.SeciliMasa.Id).ToList();
+                silinecekSiparisler = _siparisRepository.Get(new[] { "Masa", "Urun" }, siparis => siparis.MasaId == _frmSiparis.SeciliMasa.Id).ToList();
                 MessageBox.Show($"Masa kapatıldı: {silinecekSiparisler.Sum(x => x.AraToplam):c2} Tutar Tahsil edildi.");
+
+                DialogResult pdr = printDialog1.ShowDialog();
+                if (pdr == DialogResult.OK)
+                {
+                    printDocument1.Print();
+
+                    this.DialogResult = DialogResult.OK;
+                }
+
                 foreach (var item in silinecekSiparisler)
                 {
                     var rapor = new Rapor
