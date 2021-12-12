@@ -44,6 +44,7 @@ namespace KafeAdisyon.Forms
             this.btnKategoriGuncelle = new System.Windows.Forms.Button();
             this.btnUrunGuncelle = new System.Windows.Forms.Button();
             this.btnUrunSil = new System.Windows.Forms.Button();
+            this.btnKategoriSil = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbKategori)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbUrun)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nFiyat)).BeginInit();
@@ -214,12 +215,26 @@ namespace KafeAdisyon.Forms
             this.btnUrunSil.UseVisualStyleBackColor = false;
             this.btnUrunSil.Click += new System.EventHandler(this.btnUrunSil_Click);
             // 
+            // btnKategoriSil
+            // 
+            this.btnKategoriSil.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnKategoriSil.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnKategoriSil.ForeColor = System.Drawing.Color.Goldenrod;
+            this.btnKategoriSil.Location = new System.Drawing.Point(212, 470);
+            this.btnKategoriSil.Name = "btnKategoriSil";
+            this.btnKategoriSil.Size = new System.Drawing.Size(173, 49);
+            this.btnKategoriSil.TabIndex = 10;
+            this.btnKategoriSil.Text = "Kategori Sil";
+            this.btnKategoriSil.UseVisualStyleBackColor = false;
+            this.btnKategoriSil.Click += new System.EventHandler(this.btnKategoriSil_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::JveJcilarDBupdate.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(1370, 617);
+            this.Controls.Add(this.btnKategoriSil);
             this.Controls.Add(this.btnUrunSil);
             this.Controls.Add(this.btnUrunGuncelle);
             this.Controls.Add(this.btnKategoriGuncelle);
@@ -265,5 +280,6 @@ namespace KafeAdisyon.Forms
         private System.Windows.Forms.Button btnKategoriGuncelle;
         private System.Windows.Forms.Button btnUrunGuncelle;
         private System.Windows.Forms.Button btnUrunSil;
+        private System.Windows.Forms.Button btnKategoriSil;
     }
 }

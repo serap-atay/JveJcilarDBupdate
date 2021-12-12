@@ -30,11 +30,15 @@ namespace JveJcilarDBupdate.Forms
                 })
                 .Select(a => new
                 {
-                    a.Key.Day,
-                    Toplam = a.Sum(p => p.Adet * p.Fiyat)
+                    Gün = $"{a.Key.Day}.Gün",
+                    Toplam = a.Sum(p => p.Adet * p.Fiyat).ToString("c")
                 })
                 .ToList();
             dgvAylikRapor.DataSource = queryAylikRapor;
+            dgvAylikRapor.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvAylikRapor.DefaultCellStyle.Font = new Font("Tahoma", 15);
+            dgvAylikRapor.AutoSize = true;
         }
+
     }
 }

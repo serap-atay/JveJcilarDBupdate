@@ -208,5 +208,18 @@ namespace KafeAdisyon.Forms
             _urunRepo.Remove(_seciliUrun);
             KategoriDoldur();
         }
+
+        private void btnKategoriSil_Click(object sender, EventArgs e)
+        {
+            if (_seciliKategori == null) return;
+            var result = _siparisRepostory.Get(new []{"Urun"}, a => a.Urun.KategoriId == _seciliKategori.Id).FirstOrDefault();
+            if (result != null)
+            {
+                MessageBox.Show($"Bu kategori içinde siparişi tamamlanmamış bir ürün var.");
+                return;
+            }
+            _kategoriRepo.Remove(_seciliKategori);
+            KategoriDoldur();
+        }
     }
 }

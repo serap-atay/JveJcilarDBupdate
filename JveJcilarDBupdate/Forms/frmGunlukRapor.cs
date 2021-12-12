@@ -30,12 +30,15 @@ namespace JveJcilarDBupdate.Forms
                 })
                 .Select(a => new
                 {
-                    a.Key.UrunAdi,
+                    Ürün = a.Key.UrunAdi,
                     Adet = a.Sum(p => p.Adet),
-                    Toplam = a.Sum(p => p.Adet * p.Fiyat)
+                    Toplam = a.Sum(p => p.Adet * p.Fiyat).ToString("c")
                 })
                 .ToList();
             dgvGunlukRapor.DataSource = queryGunlukRapor;
+            dgvGunlukRapor.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvGunlukRapor.DefaultCellStyle.Font = new Font("Tahoma", 15);
+            dgvGunlukRapor.AutoSize = true;
         }
     }
 }

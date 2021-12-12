@@ -164,5 +164,7 @@ namespace KafeAdisyon.Forms
             this.SeciliMasa.MasaDurumu = false;
             _masaRepostory.Update(this.SeciliMasa);
         }
+
+
     }
 }

@@ -46,10 +46,11 @@ namespace JveJcilarDBupdate.Forms
             // 
             // dgvGunlukRapor
             // 
+            this.dgvGunlukRapor.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvGunlukRapor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGunlukRapor.Location = new System.Drawing.Point(135, 79);
             this.dgvGunlukRapor.Name = "dgvGunlukRapor";
-            this.dgvGunlukRapor.RowTemplate.Height = 25;
+            this.dgvGunlukRapor.RowTemplate.Height = 35;
             this.dgvGunlukRapor.Size = new System.Drawing.Size(524, 299);
             this.dgvGunlukRapor.TabIndex = 1;
             // 

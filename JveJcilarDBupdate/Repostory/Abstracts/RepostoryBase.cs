@@ -58,22 +58,7 @@ namespace JveJcilarDBupdate.Abstracts.Repostory
 
         public virtual int Save()
         {
-            try
-            {
-                return _context.SaveChanges();
-            }
-            catch (DbUpdateException ex)
-            {
-                MessageBox.Show(ex.InnerException.Message, "İşlem tamamlanamadı.");
-                return -1;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message,"İşlem tamamlanamadı.");
-                return -1;
-            }
-
-
+             return _context.SaveChanges();
         }
 
         public virtual void Update(bool isSaveLater = false)

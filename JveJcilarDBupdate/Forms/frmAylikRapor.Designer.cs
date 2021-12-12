@@ -36,16 +36,17 @@ namespace JveJcilarDBupdate.Forms
             // 
             // dgvAylikRapor
             // 
+            this.dgvAylikRapor.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAylikRapor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAylikRapor.Location = new System.Drawing.Point(141, 67);
+            this.dgvAylikRapor.Location = new System.Drawing.Point(135, 79);
             this.dgvAylikRapor.Name = "dgvAylikRapor";
-            this.dgvAylikRapor.RowTemplate.Height = 25;
+            this.dgvAylikRapor.RowTemplate.Height = 35;
             this.dgvAylikRapor.Size = new System.Drawing.Size(524, 299);
             this.dgvAylikRapor.TabIndex = 3;
             // 
             // btnAylikRapor
             // 
-            this.btnAylikRapor.Location = new System.Drawing.Point(305, 19);
+            this.btnAylikRapor.Location = new System.Drawing.Point(306, 21);
             this.btnAylikRapor.Name = "btnAylikRapor";
             this.btnAylikRapor.Size = new System.Drawing.Size(188, 42);
             this.btnAylikRapor.TabIndex = 2;
@@ -57,6 +58,7 @@ namespace JveJcilarDBupdate.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::JveJcilarDBupdate.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dgvAylikRapor);
             this.Controls.Add(this.btnAylikRapor);
