@@ -80,8 +80,8 @@ namespace JveJcilarDBupdate.Forms
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Multiselect = false;
             dialog.Title = "Bir fotoğraf seçiniz";
-            dialog.Filter = "Resim Dosyaları | *.jpeg; *.jpg";
-            dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            dialog.Filter = "Resim Dosyaları | *.jpeg; *.jpg; .webp;";
+            dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\Kafe";
 
             DialogResult result = dialog.ShowDialog();
             if (result == DialogResult.OK)
