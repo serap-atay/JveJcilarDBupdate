@@ -24,11 +24,13 @@ namespace JavaVeJavacilar.Forms
         private KatRepostory katRepostory;
         private MasaRepostory masaRepostory;
         private KafeBilgiRepostory kafeBilgiRepostory;
+        private SiparisRepostory siparisRepostory;
         private void frmKatlar_Load(object sender, EventArgs e)
         {
             katRepostory = new();
             masaRepostory = new();
             kafeBilgiRepostory = new();
+            siparisRepostory = new();
             Temizle();
             ListeyiDoldur();
         }
@@ -111,7 +113,13 @@ namespace JavaVeJavacilar.Forms
         }
         private void btnSil_Click(object sender, EventArgs e)
         {
-            if (seciliKat == null) return;
+            if (seciliKat == null) return;           
+            var result = siparisRepostory.Get(new[] { "Masa" }, a => a.Masa.KatId == seciliKat.Id).FirstOrDefault();
+            if (result != null)
+            {
+                MessageBox.Show($"Bu kat içerisinde siparişi tamamlanmamış bir masa var.");
+                return;
+            }
             katRepostory.Remove(seciliKat);
             Temizle();
             ListeyiDoldur();

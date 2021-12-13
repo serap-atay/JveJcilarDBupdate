@@ -18,7 +18,7 @@ namespace JveJcilarDBupdate.Repostory
             {
                 return _context.SaveChanges();
             }
-            catch (DbUpdateException ex)
+            catch (DbUpdateException)
             {
                 MessageBox.Show("Mevcut bir kat varken işletme silinemez.", "İşlem tamamlanamadı.");
                 return -1;
