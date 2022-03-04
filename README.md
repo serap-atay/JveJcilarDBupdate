@@ -11,7 +11,7 @@ Kullanılan Teknolojiler:
 - Data: SQL Server & Entity Framework Core
 
 Class Diagram:
-![alt text](https://resimyukle.io/r/GxAYMBf0ot)
+![alt text](https://github.com/serap-atay/JveJcilarDBupdate/blob/master/ClassDiyagram.png?raw=true)
 
 Son Durum:
 Proje'de düzeltilmesi ve geliştirilmesi gereken yerler var.
