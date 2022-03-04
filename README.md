@@ -1,4 +1,3 @@
-# JveJcilarDBupdate
 # JAVA Kafe Otomasyon Sistemi
 
 Projenin Amacı: Bir Restoran veya Kafe işletmesinin tüm otomasyon süreçlerinin yönetildiği masaüstü uygulaması.
