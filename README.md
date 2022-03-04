@@ -10,5 +10,10 @@ Kullanılan Teknolojiler:
 - C#
 - Data: SQL Server & Entity Framework Core
 
+Class Diagram:
+![alt text](https://resimyukle.io/r/GxAYMBf0ot)
+
 Son Durum:
 Proje'de düzeltilmesi ve geliştirilmesi gereken yerler var.
+
+
